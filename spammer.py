@@ -5,7 +5,7 @@ import time
 
 print('Python code for automating discord messages.')
 driver = webdriver.Chrome()
-server = input('Input the url for the channel of your choice: ')
+server = input('Input the url for the chat you would like to spa: ')
 
 driver.get(server)
 usemail = input('Input email: ')
@@ -19,8 +19,10 @@ buttons = driver.find_elements_by_tag_name('button')
 buttons[1].click()
 
 message = input('What message would you like to spam? ')
+delay = input('Delay between messages (s)? ')
 
 print('Initializing...')
+# Timer to let Discord load
 time.sleep(10)
 print('Starting...')
 
@@ -28,4 +30,4 @@ while True:
     actions = ActionChains(driver)
     actions.send_keys(message, Keys.RETURN)
     actions.perform()
-    time.sleep(60)
+    time.sleep(delay)
